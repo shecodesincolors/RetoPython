@@ -14,6 +14,19 @@ while True:
 """
 
 #RETO
+from posixpath import split
+from pprint import pprint
+padawans=[]
+
+def inscripcionPadawans(nombre,apellido,edad,temas):
+    temas= temas.lower().split(", ")
+    mayorEdad= True if edad >= 18 else False
+    try:
+        padawans.append({"nombre":nombre, "apellido":apellido, "edad":edad, "temas":temas})
+    except:
+        return "No se agregaron los datos"
+    return "\n\nPADAWAN REGISTRADA EXITOSAMENTE!\n"
+
 
 while True:
     print('Directorio Padawan ¡Regístrate!')
@@ -32,10 +45,10 @@ while True:
             print('\nEres menor de edad\n')
         print("Los temas que puedes llevar son:Python,JavaScript,BBDD,JAVA y/o Linux\n")
         temas = str(input("Ingresa tema/s de tu elección:"))
-        print("\n¡PADAWAN REGISTRADA EXITOSAMENTE!\n")
+        print(inscripcionPadawans(nombre,apellido,edad,temas),"\n\n")
     elif opcion == 2:
-        skilldirec={nombre,apellido,edad,temas} 
-        print(skilldirec)
+        print(padawans)
+
     elif opcion == 3:
         print("\nAdiós")
         break
